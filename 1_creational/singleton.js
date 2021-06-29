@@ -8,19 +8,34 @@ class Wallet {
         return Wallet.instance;
     }
 
-    getInstance () {
-        return Wallet.balance;
+    getInformation () {
+        return console.log(Wallet.balance);
     }
 
     addCash(cash) {
-        return this.balance += cash;
+        return Wallet.balance += cash;
     }
 
     withdrawalCash(cash) {
-        return this.balance -= cash;
+        return Wallet.balance -= cash;
     }
 }
 
-const myWallet = Wallet.getInstance();
+const myWallet = new Wallet();
 
-console.log(myWallet);
+myWallet.getInformation();
+
+myWallet.addCash(300);
+
+myWallet.getInformation();
+
+const myNewWallet = new Wallet();
+
+myNewWallet.getInformation();
+console.log("===========");
+myNewWallet.withdrawalCash(200);
+
+myNewWallet.getInformation();
+myWallet.getInformation()
+
+console.log(myWallet === myNewWallet);
