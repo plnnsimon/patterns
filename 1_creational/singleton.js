@@ -1,7 +1,7 @@
 class Wallet {
     constructor() {
-        if (Wallet.instance == null) {
-            Wallet.balance = 0;
+        if (!Wallet.instance) {
+            this.balance = 0;
             Wallet.instance = this
         }
         
@@ -9,33 +9,21 @@ class Wallet {
     }
 
     getInformation () {
-        return console.log(Wallet.balance);
+        return this.balance;
     }
 
     addCash(cash) {
-        return Wallet.balance += cash;
+        this.balance += cash;
     }
 
     withdrawalCash(cash) {
-        return Wallet.balance -= cash;
+        this.balance -= cash;
     }
 }
 
 const myWallet = new Wallet();
-
-myWallet.getInformation();
-
-myWallet.addCash(300);
-
-myWallet.getInformation();
+Object.freeze(myWallet);
 
 const myNewWallet = new Wallet();
-
-myNewWallet.getInformation();
-console.log("===========");
-myNewWallet.withdrawalCash(200);
-
-myNewWallet.getInformation();
-myWallet.getInformation()
 
 console.log(myWallet === myNewWallet);
