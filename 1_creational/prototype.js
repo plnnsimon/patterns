@@ -1,8 +1,3 @@
-/*
-    порождающий паттерн позаоляющий копировать обьекты не вдаваясь в подробности их реализации
-*/
-
-
 class AcerComputer {
 
     constructor(cpu, gpu, ram, discSystem) {

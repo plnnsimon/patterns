@@ -1,31 +1,28 @@
-/*
-    один интерфейс для создания обьектов в суперклассе который предоставляет подклассам изменять тип сщздаваемых обьектов
-*/
-
-class Camera {
-    constructor(model, price, canPrint) {
-        this.model = model;
-        this.price = price;
-        this.canPrint = canPrint;
-    }
+function ChineseFood (meal) {
+    this.meal = meal
+    this.cost = 50
 }
 
-class CanonFactory {
-    create(model) {
-        if (model === "EOS") {
-            return new Camera(model, 10999, false);
-        }
-        if (model === "Zoemini") {
-            return new Camera(model, 5999, true);
+function ItalianFood (meal) {
+    this.meal = meal
+    this.cost = 70
+}
+
+function Restaurant () {
+    this.create = (type, meal) => {
+        switch(type) {
+            case "sushi": 
+                return new ChineseFood(meal);
+            case "pizza":
+                return new ItalianFood(meal);
         }
     }
 }
 
-const camera = new CanonFactory();
+const restaurant = new Restaurant();
 
-const eos = camera.create("EOS");
+const order = [];
 
-const zoemini = camera.create("Zoemini");
+order.push(restaurant.create("sushi", "philadelphia set"));
 
-console.log(eos);
-console.log(zoemini);
+console.log(order);

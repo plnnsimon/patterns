@@ -1,57 +1,35 @@
-class Car {
-    constructor() {
-        this.price = 10000;
-        this.model = "Car";
+/*
+    структурный паттерн проектирования позволяющий обьектам динамически добавлять новую функциональность
+*/
+
+class Player {
+    constructor(name) {
+        this.name = name
+        this.level = 1
+        this.equipment = []
     }
 
-    getPrice() {
-        return this.price;
-    }
-
-    getDescription() {
-        return this.model;
-    }
-}
-
-class Tesla extends Car {
-    constructor() {
-        super();
-        this.price = 25000;
-        this.model = "Tesla";
+    getInfo() {
+        return `Player ${this.name} has ${this.level} level`
     }
 }
 
-class Autopilot {
-    constructor(car) {
-        this.car = car;
-    }
+const weapon = player => {
+    player.level += 1;
+    player.equipment.push("weapon");
+};
 
-    getPrice() {
-        return this.car.getPrice() + 5000;
-    }
+const armor = player => {
+    player.level += 1;
+    player.equipment.push("armor");
+};
 
-    getDescription() {
-        return `${this.car.getDescription()} has autopilot`;
-    }
-}
+const player1 = new Player("Alex");
 
-class Parktronic {
-    constructor(car) {
-        this.car = car;
-    }
+weapon(player1);
 
-    getPrice() {
-        return this.car.getPrice() + 3000;
-    }
+armor(player1)
 
-    getDescription() {
-        return `${this.car.getDescription()} has parktronic`
-    }
-}
+console.log(player1.getInfo());
 
-let tesla = new Tesla();
-
-tesla = new Autopilot(tesla);
-
-
-console.log(tesla.getDescription(), tesla.getPrice());
+console.log(player1.equipment);

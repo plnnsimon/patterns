@@ -1,44 +1,68 @@
-/*
-    порождающий паттерн который создает интерфейс групирующий другие фабрикиб которые логически связанные друг с другом
-*/
-
-
-function canonProducer (type) {
-    return type === "digital" ? digitalCanonCamera : reflexCanonCamera;
-};
-
-function digitalCanonCamera() {
-    return new EOS();
-}
-
-function reflexCanonCamera() {
-    return new SLR();
-}
-
-class EOS {
-    getInfo() {
-        return {
-            model: "EOS",
-            type: "digital",
-            pixels: 12,
-            canPrint: false
-        }
+function TransportFactory(brand) {
+    switch(brand) {
+        case "BMW": 
+            return new BMWFactory(brand);
+        case "HONDA":
+            return new HondaFactory(brand);
     }
 }
 
-class SLR {
-    getInfo() {
-        return {
-            model: "SLR",
-            type: "reflex",
-            pixels: 10,
-            canPrint: false
-        }
+class BMWFactory {
+    constructor(brand) {
+        this.brand = brand
+    }
+    create(type) {
+        return type === "bike" ? new Bike(this.brand) : new Car(this.brand);
     }
 }
 
-const camera = canonProducer("digital");
+class HondaFactory {
+    constructor(brand) {
+        this.brand = brand
+    }
+    create(type) {
+        return type === "bike" ? new Bike(this.brand) : new Car(this.brand);
+    }
+}
 
-const myCamera = new camera();
+class Car { 
+    constructor(brand) {
+        this.brand = brand
+        this.wheels = 4
+        this.cost = 10000
+    }
 
-console.log(myCamera.getInfo());
+    start() {
+        return "Engine started";
+    }
+
+    stop() {
+        return "Engine stopped";
+    }
+}
+
+class Bike { 
+    constructor(brand) {
+        this.brand = brand
+        this.wheels = 2
+        this.cost = 5000
+    }
+
+    start() {
+        return "Engine started";
+    }
+
+    stop() {
+        return "Engine stopped";
+    }
+}
+
+const transport = TransportFactory("BMW");
+
+const myBike = transport.create("bike")
+
+console.log(myBike);
+
+const myCar = transport.create("car")
+
+console.log(myCar.start());
