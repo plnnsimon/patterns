@@ -1,28 +1,58 @@
-function ChineseFood (meal) {
-    this.meal = meal
-    this.cost = 50
-}
-
-function ItalianFood (meal) {
-    this.meal = meal
-    this.cost = 70
-}
-
-function Restaurant () {
-    this.create = (type, meal) => {
-        switch(type) {
-            case "sushi": 
-                return new ChineseFood(meal);
-            case "pizza":
-                return new ItalianFood(meal);
-        }
+class Factory {
+  createEmployee(employeeType) {
+    if (employeeType === 'fulltime') {
+      return new FullTime(employeeType);
     }
+    if (employeeType === 'trainee') {
+      return new Trainee(employeeType);
+    }
+    if (employeeType === 'remote') {
+      return new Remote(employeeType);
+    }
+
+    throw new Error('This type not exists');
+  }
 }
 
-const restaurant = new Restaurant();
+class Worker {
+  constructor(type, salary) {
+    this.type = type;
+    this.salary = salary;
+  }
 
-const order = [];
+  describe() {
+    console.log(`${this.type} worker: ${this.salary}$/hour`);
+  }
+}
 
-order.push(restaurant.create("sushi", "philadelphia set"));
+class FullTime extends Worker {
+  constructor(type) {
+    super(type);
+    this.salary = 15;
+  }
+}
 
-console.log(order);
+class Trainee extends Worker {
+  constructor(type) {
+    super(type);
+    this.salary = 5;
+  }
+}
+
+class Remote extends Worker {
+  constructor(type) {
+    super(type);
+    this.salary = 10;
+  }
+}
+
+const employees = [];
+
+const factory = new Factory();
+
+employees.push(factory.createEmployee('fulltime'));
+employees.push(factory.createEmployee('trainee'));
+employees.push(factory.createEmployee('remote'));
+
+console.log(employees);
+employees.forEach(emp => emp.describe())

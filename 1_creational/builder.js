@@ -1,4 +1,14 @@
-class assaultWeapon {
+class Weapon {
+    fire() {
+        console.log("tra-ta-ta-ta");
+    }
+
+    reloading() {
+        console.log("Reloading...");
+    }
+}
+
+class assaultWeapon extends Weapon {
     constructor() {
         this.optic = false
         this.laser = false

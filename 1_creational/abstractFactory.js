@@ -1,68 +1,92 @@
-function TransportFactory(brand) {
-    switch(brand) {
-        case "BMW": 
-            return new BMWFactory(brand);
-        case "HONDA":
-            return new HondaFactory(brand);
+class TransportFactory {
+    createBike( brand ) {
+        return new Bike( brand )
+    }
+
+    createCar( brand ) {
+        return new Car( brand )
     }
 }
 
-class BMWFactory {
-    constructor(brand) {
-        this.brand = brand
+class Bike {
+    constructor( brand, speed ) {
+        this.type = "Motorbike";
+        this.brand = brand;
+        this.speed = speed;
     }
-    create(type) {
-        return type === "bike" ? new Bike(this.brand) : new Car(this.brand);
-    }
-}
 
-class HondaFactory {
-    constructor(brand) {
-        this.brand = brand
-    }
-    create(type) {
-        return type === "bike" ? new Bike(this.brand) : new Car(this.brand);
+    getInfo() {
+        return `This is ${this.brand} ${this.type}. Speed - ${this.speed}`
     }
 }
 
-class Car { 
-    constructor(brand) {
-        this.brand = brand
-        this.wheels = 4
-        this.cost = 10000
+class Car {
+    constructor( brand, speed ) {
+        this.type = "Car";
+        this.brand = brand;
+        this.speed = speed;
     }
 
-    start() {
-        return "Engine started";
-    }
-
-    stop() {
-        return "Engine stopped";
+    getInfo() {
+        return `This is ${this.brand} ${this.type}. Speed - ${this.speed}`
     }
 }
 
-class Bike { 
-    constructor(brand) {
-        this.brand = brand
-        this.wheels = 2
-        this.cost = 5000
+class HondaFactory extends TransportFactory {
+    createBike( model ) {
+        return new HondaBike( model )
     }
 
-    start() {
-        return "Engine started";
-    }
-
-    stop() {
-        return "Engine stopped";
+    createCar( model ) {
+        return new HondaCar( model )
     }
 }
 
-const transport = TransportFactory("BMW");
+class HondaBike extends Bike {
+    constructor( brand ) {
+        super( brand )
+        this.speed = 280
+    }
+}
 
-const myBike = transport.create("bike")
+class HondaCar extends Car {
+    constructor( brand ) {
+        super( brand )
+        this.speed = 250
+    }
+}
 
-console.log(myBike);
+class BMWFactory extends TransportFactory {
+    createBike( model ) {
+        return new BMWBike( model )
+    }
 
-const myCar = transport.create("car")
+    createCar( model ) {
+        return new BMWCar( model )
+    }
+}
 
-console.log(myCar.start());
+class BMWBike extends Bike {
+    constructor( brand ) {
+        super( brand )
+        this.speed = 310
+    }
+}
+
+class BMWCar extends Car {
+    constructor( brand ) {
+        super( brand )
+        this.speed = 270
+    }
+}
+
+const toyotaFactory = new HondaFactory()
+const bmwFactory = new BMWFactory()
+
+const myCar = toyotaFactory.createCar("Honda");
+
+const myBike = bmwFactory.createBike("BMW")
+
+console.log(myCar.getInfo());
+console.log(myBike.getInfo());
+

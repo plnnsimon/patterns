@@ -1,14 +1,14 @@
-class Wallet {
+class Budget {
     constructor() {
-        if (!Wallet.instance) {
-            this.balance = 0;
-            Wallet.instance = this
+        if (Budget.exists) {
+            return Budget.instance;
         }
-        
-        return Wallet.instance;
+        Budget.instance = this;
+        Budget.exists = true;
+        this.balance = 0;
     }
 
-    getInformation () {
+    getBalance () {
         return this.balance;
     }
 
@@ -16,14 +16,13 @@ class Wallet {
         this.balance += cash;
     }
 
-    withdrawalCash(cash) {
+    takeCash(cash) {
         this.balance -= cash;
     }
 }
 
-const myWallet = new Wallet();
-Object.freeze(myWallet);
+const myBudget = new Budget();
 
-const myNewWallet = new Wallet();
+const myBudget2 = new Budget();
 
-console.log(myWallet === myNewWallet);
+console.log(myBudget === myBudget2);
