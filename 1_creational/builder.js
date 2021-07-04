@@ -10,6 +10,7 @@ class Weapon {
 
 class assaultWeapon extends Weapon {
     constructor() {
+        super()
         this.optic = false
         this.laser = false
         this.ammunition = 30
