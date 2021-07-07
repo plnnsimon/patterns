@@ -1,7 +1,3 @@
-/*
-    структурный паттерн проектирования позволяющий обьектам динамически добавлять новую функциональность
-*/
-
 class Player {
     constructor(name) {
         this.name = name
@@ -10,7 +6,7 @@ class Player {
     }
 
     getInfo() {
-        return `Player ${this.name} has ${this.level} level`
+        return `Player ${this.name} has level ${this.level}`
     }
 }
 
@@ -24,11 +20,29 @@ const armor = player => {
     player.equipment.push("armor");
 };
 
+const poison = player => {
+    player.level += 5;
+    console.log("Power On");
+    setTimeout(function () {
+        console.log("Power Off");
+        player.level -= 5;
+    }, 5000)
+}
+
 const player1 = new Player("Alex");
+
+const death = player => {
+    player.level = 1
+    player.equipment.splice(0, player.equipment.length)
+}
 
 weapon(player1);
 
-armor(player1)
+armor(player1);
+
+// death(player1);
+
+poison(player1);
 
 console.log(player1.getInfo());
 

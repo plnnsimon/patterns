@@ -1,29 +1,29 @@
 class Bank {
-    constructor() {
-      this.cash = 0;
+  constructor() {
+    this.cash = 0;
+  }
+ 
+  deposit(amount) {
+    this.cash += amount;
+    return this.cash;
+  }
+ 
+  withdraw(amount) {
+    if (amount <= this.cash) {
+      this.cash -= amount;
+      return true;
+    } else {
+      return false;
     }
-  
-    deposit(amount) {
-      this.cash += amount;
-      return this.cash;
-    }
-  
-    withdraw(amount) {
-      if (amount <= this.cash) {
-        this.cash -= amount;
-        return true;
-      } else {
-        return false;
-      }
-    }
-  
-    total() {
-      return this.cash;
-    }
+  }
+ 
+  total() {
+    return this.cash;
+  }
 
 }
 
-class BankProxy {
+class ATM {
     constructor() {
       this.bank = new Bank();
     }
@@ -47,10 +47,10 @@ class BankProxy {
 
 }
 
-const bank = new BankProxy()
+const atm = new ATM()
 
-bank.deposit(3500)
-bank.withdraw(500)
-bank.withdraw(3550)
+atm.deposit(3500)
+atm.withdraw(500)
+atm.withdraw(3550)
 
-bank.total()
+atm.total()
