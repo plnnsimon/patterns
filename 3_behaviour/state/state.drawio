@@ -1,0 +1,19 @@
+<mxfile>
+    <diagram id="RjtuZmgETk-0mBvIME61" name="Page-1">
+        <mxGraphModel dx="519" dy="617" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Phone" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="360" width="200" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="-powerOn: boolean&lt;br&gt;-screenOn: boolean" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="400" width="200" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="+charge()&lt;br&gt;+turnOn()&lt;br&gt;+turnOff()&lt;br&gt;+touch()&lt;br&gt;+swipe()" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="440" width="200" height="120" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

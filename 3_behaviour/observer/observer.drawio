@@ -1,0 +1,40 @@
+<mxfile>
+    <diagram id="tGxK9Wz20mGLQGhB0ljH" name="Page-1">
+        <mxGraphModel dx="433" dy="514" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Publisher" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="320" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="-subscribers: Array&amp;lt;Observer&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="360" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="+sendMessage( message: str ): void&lt;br&gt;+register( subscriber: Observer ): void" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="400" width="210" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Observer" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="320" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="-construtor( name: str )" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="360" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="+notify( message: str ): void" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="400" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="370" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="endArrow=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="10">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="300" y="380" as="sourcePoint"/>
+                        <mxPoint x="380" y="380" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="" style="triangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="390" y="375" width="10" height="10" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

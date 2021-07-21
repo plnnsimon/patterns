@@ -1,0 +1,47 @@
+<mxfile>
+    <diagram id="35AmDSvmOC7etBG4h-Q4" name="Page-1">
+        <mxGraphModel dx="126" dy="120" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="&amp;lt;abstract&amp;gt;&lt;br&gt;Sandwich" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="160" width="220" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="+makeSandwich(): void&lt;br&gt;+cutBread(): void&lt;br&gt;+putBred(): void&lt;br&gt;+addMeat(): void&lt;br&gt;+addCheese(): void&lt;br&gt;+addVegetables(): void&lt;br&gt;+customerWantsMeat(): boolean&lt;br&gt;+customerWantsCheese(): boolean&lt;br&gt;+customerWantsVegetables(): boolean&lt;br&gt;+wrapTheSandwich(): void" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="200" width="220" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="ItalianSandwich" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="400" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="+meat: Array&amp;lt;string&amp;gt;&lt;br&gt;+cheese: Array&amp;lt;string&amp;gt;&lt;br&gt;+vegetables: Array&amp;lt;string&amp;gt;&lt;br&gt;+putBread(): void&lt;br&gt;+addMeat(): void&lt;br&gt;+addCheese(): void&lt;br&gt;+addVegetables(): void" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="440" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="VegetarianSandwich" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="480" y="400" width="200" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="+vegetables: Array&amp;lt;string&amp;gt;&lt;br&gt;+customerWantsMeat(): boolean&lt;br&gt;+customerWantsCheese(): boolean&lt;br&gt;+putBread(): void&lt;br&gt;+addMeat(): void&lt;br&gt;+addCheese(): void&lt;br&gt;+addVegetables(): void" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="480" y="440" width="200" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="endArrow=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="10">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="280" y="400" as="sourcePoint"/>
+                        <mxPoint x="300" y="380" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="" style="triangle;whiteSpace=wrap;html=1;rotation=-45;" vertex="1" parent="1">
+                    <mxGeometry x="300" y="360" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="triangle;whiteSpace=wrap;html=1;rotation=-130;" vertex="1" parent="1">
+                    <mxGeometry x="540" y="360" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="endArrow=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.507;exitY=0.005;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="7" target="11">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="290" y="410" as="sourcePoint"/>
+                        <mxPoint x="312.92893218813447" y="387.07106781186553" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

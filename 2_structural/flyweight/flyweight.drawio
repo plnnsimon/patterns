@@ -1,0 +1,46 @@
+<mxfile>
+    <diagram id="xP2IXJqL14V0ehUrbHl9" name="Page-1">
+        <mxGraphModel dx="181" dy="206" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="FoodCheck" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="310" width="200" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Product" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="410" y="350" width="165" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="+product: str&lt;br&gt;-constructor(product: str)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="410" y="390" width="165" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="+list: Array&amp;lt;Product&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="350" width="200" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="+addProduct( product ): Product&lt;br&gt;+getCheckInfo(): void" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="390" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="360" width="25" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="endArrow=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="7">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="360" y="370" as="sourcePoint"/>
+                        <mxPoint x="410" y="370" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="390" y="380" as="sourcePoint"/>
+                        <mxPoint x="410" y="370" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="390" y="360" as="sourcePoint"/>
+                        <mxPoint x="410" y="370" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

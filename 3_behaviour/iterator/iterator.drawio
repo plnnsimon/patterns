@@ -1,0 +1,19 @@
+<mxfile>
+    <diagram id="NMh-mGcWDO-Jr0XoFhyD" name="Page-1">
+        <mxGraphModel dx="519" dy="617" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Iterator" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="354" y="515" width="206" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="-index: number&lt;br&gt;-collection: Array&amp;lt;any&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="354" y="555" width="206" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="+hasNext(): bollean&lt;br&gt;+next(): any" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="354" y="595" width="206" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

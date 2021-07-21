@@ -1,0 +1,59 @@
+<mxfile>
+    <diagram id="sGyF9RormThGsXX5U5nF" name="Page-1">
+        <mxGraphModel dx="109" dy="171" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="&lt;b&gt;WeaponBuilder&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="380" width="220" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="-weapon: AssaultWeapon" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="420" width="220" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="+constructor()&lt;br&gt;+addOptic(): WeaponBuilder&lt;br&gt;+addLaser(): WeaponBuilder&lt;br&gt;+changeAmmunition(): WeaponBuilder&lt;br&gt;+changeColor(): WeaponBuilder&lt;br&gt;+build(): WeaponBuilder" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="460" width="220" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="AssaultWeapon" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="640" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="optic: boolean&lt;br&gt;laser: boolean&lt;br&gt;ammunition: number" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="680" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Weapon" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="640" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="+fire(): str&lt;br&gt;+reloading(): str" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="680" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="" style="endArrow=none;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="390" y="660" as="sourcePoint"/>
+                        <mxPoint x="470" y="660" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="" style="triangle;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="470" y="655" width="10" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="endArrow=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="5" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="340" y="650" as="sourcePoint"/>
+                        <mxPoint x="320" y="620" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="20" value="" style="endArrow=none;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="330" y="640" as="sourcePoint"/>
+                        <mxPoint x="340" y="620" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="4">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="330" y="640" as="sourcePoint"/>
+                        <mxPoint x="380" y="590" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
