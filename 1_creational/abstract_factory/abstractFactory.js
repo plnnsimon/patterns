@@ -101,3 +101,4 @@ var myCar = hondaFactory.createCar();
 var myBike = bmwFactory.createBike();
 console.log(myCar.getInfo());
 console.log(myBike.getInfo());
+//# sourceMappingURL=abstractFactory.js.map

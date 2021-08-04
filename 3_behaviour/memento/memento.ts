@@ -9,14 +9,20 @@ class Game {
         return new GameMemento(state)
     }
 
-    download(GameMemento: GameMemento): void {
-        this.state = GameMemento.getState();
-        console.log('State = ' + this.state)
+    download(memento: Memento): void {
+        this.state = memento.getState();
+        console.log('Save - ' + this.state)
     }
 }
 
-class GameMemento {
-    constructor(public state: string) {
+interface Memento {
+    getState(): string
+    setState(state: string): void
+}
+
+class GameMemento implements Memento {
+    private state: string
+    constructor(state: string) {
         this.state = state
     }
 
@@ -31,7 +37,7 @@ class GameMemento {
 
 
 class Save {
-    saveValues: Array<GameMemento>
+    private saveValues: Memento[] = []
     constructor() {
         console.log("Saves created");
         this.saveValues = []
@@ -39,7 +45,7 @@ class Save {
 
     addSave(game: GameMemento): void {
         this.saveValues.push(game);
-        console.log(`Save "${game.state}" created successfully`);
+        console.log(`Save "${game.getState()}" created successfully`);
     }
 
     getSave(index: number): any {
@@ -57,4 +63,4 @@ saves.addSave(mySave)
 saves.addSave(game.save('second save'))
 saves.addSave(game.save('third save'))
 
-game.download(saves.getSave(2))
+game.download(saves.getSave(1))

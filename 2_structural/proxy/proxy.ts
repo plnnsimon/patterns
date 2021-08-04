@@ -1,38 +1,74 @@
-class User {
-    constructor(public name: string, public type: string) {
-        this.name = name
+interface User {
+    accessToChange: boolean
+    getContent(): void
+    changeContent(): void
+}
+
+
+class AbstractUser implements User {
+    accessToChange: boolean
+    type: string
+
+    constructor(type: string) {
         this.type = type
+        this.accessToChange = false
     }
 
-    getContent(): string {
-        return "Some content from page...";
+    public getContent(): void {
+        console.log('some content')
     }
-
-    leavePage(): void {
-        console.log("You left the page...");
+    public changeContent(): void {
+        console.log('Some operations with content...');
     }
 }
 
-class ContentSecurity {
-    constructor(public user: User) {
+
+
+class ContentSecurity implements User {
+    accessToChange: boolean
+    private user: AbstractUser
+    constructor(user: AbstractUser) {
         this.user = user
+        this.accessToChange = false
     }
 
-    getContent(): string {
-        if (this.user.type === "registered") {
-            this.user.getContent();
+    changeContent(): void {
+        if (this.checkAccess()) {
+            this.accessToChange = true
         } else {
-            return "You must to register";
+            this.accessToChange = false
         }
     }
 
-    leavePage() {
-        this.user.leavePage()
+    public getContent(): void {
+        if (this.checkAccess()) {
+            this.user.getContent()
+            this.user.changeContent()
+        } else {
+            this.user.getContent()
+        }
     }
+
+    private checkAccess(): boolean {
+        console.log("Checking user...")
+        if (this.user.type === "administrator") {
+            console.log("access to change - granted")
+            return true
+        } else {
+            console.log('access to change - denied')
+            return false
+        }
+    }
+
 }
 
-const john = new ContentSecurity(new User("John", "registered"))
-const jack = new ContentSecurity(new User("Jack", ""))
+const john = new ContentSecurity(new AbstractUser('simple'))
+const adam = new ContentSecurity(new AbstractUser('administrator'))
+const adams = new ContentSecurity(new AbstractUser(''))
+
 
 john.getContent()
-jack.getContent()
+console.log('=======')
+adam.getContent()
+console.log('=======')
+adams.getContent()

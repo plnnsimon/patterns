@@ -1,5 +1,5 @@
 class AndroidRobot {
-    commands: Array<Command>
+    private commands: Array<Command>
     constructor() {
         this.commands = [];
     }
@@ -12,24 +12,20 @@ class AndroidRobot {
     }
 }
 
-abstract class Command {
+interface Command {
     uid: number
-    constructor() {
-        this.uid = Math.floor(Math.random() * 1000)
-    }
-
-    execute(): void {}
-
-    undo(): void {}
+    execute(): void
+    undo(): void
 }
 
-class CleanCommand extends Command {
-    constructor(public subject: string) {
-        super ()
-        this.subject = subject
+class CleanCommand implements Command {
+    uid: number
+    constructor(public object: string) {
+        this.object = object
+        this.uid = Math.floor(Math.random() * 1000)
     }
     execute(): void {
-        console.log(`Execute -> Clean Command - UID ${this.uid}: ${this.subject}`);
+        console.log(`Execute -> Clean Command - UID ${this.uid}; object: ${this.object}`);
     }
 
     undo(): void {
@@ -37,13 +33,14 @@ class CleanCommand extends Command {
     }
 }
 
-class MoveCommand extends Command {
+class MoveCommand implements Command {
+    uid: number
     constructor(public direction: string) {
-        super ()
         this.direction = direction
+        this.uid = Math.floor(Math.random() * 1000)
     }
     execute(): void {
-        console.log(`Execute -> Move Command - UID ${this.uid}: ${this.direction}`);
+        console.log(`Execute -> Move Command - UID ${this.uid}; direction: ${this.direction}`);
     }
     undo(): void {
         console.log("Undo -> Move Command");
@@ -56,9 +53,8 @@ const cleanCommand = new CleanCommand("room")
 const moveCommand = new MoveCommand("kitchen")
 
 android.execute(cleanCommand);
-android.execute(moveCommand)
-
-
 android.undo(cleanCommand);
+
+android.execute(moveCommand)
 android.undo(moveCommand)
 

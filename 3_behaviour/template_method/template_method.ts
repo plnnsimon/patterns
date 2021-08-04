@@ -1,78 +1,63 @@
 abstract class Sandwich {
-    makeSandwich(): void {
+    meat: Array<string> = ["Salami", "Pepperoni", "Ham"];
+    cheese: Array<string> = ["Radomer", "Cheder"];
+    vegetables: Array<string> = ["Tomato", "Salade", "Onion"];
+    public makeSandwich(): void {
         this.cutBread()
         this.putBread();
-        if(this.customerWantsMeat()){
+        if (this.customerWantsMeat()) {
             this.addMeat()
         }
-        if(this.customerWantsCheese()) {
+        if (this.customerWantsCheese()) {
             this.addCheese()
         }
-        if(this.customerWantsVegetables()) {
+        if (this.customerWantsVegetables()) {
             this.addVegetables()
         }
         this.wrapTheSandwich();
     }
     public cutBread(): void {
-        console.log("Bread is cut");        
+        console.log("Bread cut");
     }
 
-    abstract putBread(): void;
-    abstract addMeat(): void;
-    abstract addCheese(): void;
-    abstract addVegetables(): void;
-
-    customerWantsMeat(): boolean {
-        return true
-    }
-    customerWantsCheese(): boolean {
-        return true
-    }
-    customerWantsVegetables(): boolean {
-        return true
-    }
-    public wrapTheSandwich(): void {
-        console.log("Sandwich is ready!!!");
-    }
-}
-
-class ItalianSandwich extends Sandwich {
-    meat: Array<string> = ["Salami", "Pepperoni", "Ham"];
-    cheese: Array<string> = ["Radomer", "Cheder"];
-    vegetables: Array<string> = ["Tomato", "Salade", "Onion"];
-
-    putBread(): void {
-        console.log("Bread added");
-    }
-    addMeat(): void {
+    public putBread(): void {
+        console.log("Bread added")
+    };
+    public addMeat(): void {
         console.log("Adding meat: ");
         this.meat.forEach(meat => console.log(meat))
     }
-    addCheese(): void {
+    public addCheese(): void {
         console.log("Adding cheese: ");
         this.cheese.forEach(cheese => console.log(cheese))
     }
-    addVegetables(): void {
+    public addVegetables(): void {
         console.log("Adding vegetables: ");
         this.vegetables.forEach(vegetable => console.log(vegetable))
     }
-    
+
+    abstract customerWantsMeat(): boolean
+    abstract customerWantsCheese(): boolean
+    abstract customerWantsVegetables(): boolean
+    abstract wrapTheSandwich(): void
+}
+
+class ItalianSandwich extends Sandwich {
+    customerWantsMeat(): boolean { return true }
+    customerWantsCheese(): boolean { return true }
+    customerWantsVegetables(): boolean { return true }
+    wrapTheSandwich(): void {
+        console.log("Italian sandwich is ready!!!");
+    }
 }
 
 class VegetarianSandwich extends Sandwich {
-    vegetables: Array<string> = ["Tomato", "Salade", "Onion"];
     customerWantsMeat(): boolean { return false }
     customerWantsCheese(): boolean { return true }
-    putBread(): void {
-        console.log("Bread added");
+    customerWantsVegetables(): boolean { return true }
+    wrapTheSandwich(): void {
+        console.log("Vegetarian sandwich is ready!!!");
     }
-    addMeat(): void {}
-    addCheese(): void {}
-    addVegetables(): void {
-        console.log("Vegetables meat: ");
-        this.vegetables.forEach(vegetable => console.log(vegetable))
-    }
-    
 }
 
 const italianSandwich = new ItalianSandwich()
@@ -82,4 +67,4 @@ console.log("======");
 
 const vegetarianSandwich = new VegetarianSandwich()
 
-italianSandwich.makeSandwich()
+vegetarianSandwich.makeSandwich()

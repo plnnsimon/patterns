@@ -1,93 +1,49 @@
-class AndroidRobot {
-    constructor() {
+var AndroidRobot = /** @class */ (function () {
+    function AndroidRobot() {
         this.commands = [];
     }
-    execute(command, comments = undefined) {
-        this.commands.push(command)
-        command.execute(comments)
-    }
-    undo(command) {
+    AndroidRobot.prototype.execute = function (command) {
+        command.execute();
+        this.commands.push(command);
+    };
+    AndroidRobot.prototype.undo = function (command) {
         command.undo();
+    };
+    return AndroidRobot;
+}());
+var CleanCommand = /** @class */ (function () {
+    function CleanCommand(object) {
+        this.object = object;
+        this.object = object;
+        this.uid = Math.floor(Math.random() * 1000);
     }
-    listCommands() {
-        return this.commands.reduce((acc, curr) => acc + curr.toString() + "\n", "")
-    }
-}
-
-class Command {
-    constructor() {
-        this.uid = Math.floor(Math.random() * 1000)
-    }
-
-    toString() {
-        return `Android: command UID: ${this.uid}`
-    }
-
-    execute(args) {}
-
-    undo(args) {}
-}
-
-class CleanCommand extends Command {
-    constructor(service) {
-        super()
-        this.service = service
-    }
-
-    execute() {
-        console.log("Execute -> Clean Command");
-        this.service.clean();
-    }
-
-    undo() {
+    CleanCommand.prototype.execute = function () {
+        console.log("Execute -> Clean Command - UID " + this.uid + "; object: " + this.object);
+    };
+    CleanCommand.prototype.undo = function () {
         console.log("Undo -> Clean Command");
-        this.service.stop();
+    };
+    return CleanCommand;
+}());
+var MoveCommand = /** @class */ (function () {
+    function MoveCommand(direction) {
+        this.direction = direction;
+        this.direction = direction;
+        this.uid = Math.floor(Math.random() * 1000);
     }
-}
-
-class MoveCommand extends Command {
-    constructor(service) {
-        super()
-        this.service = service;
-    }
-    execute(direction) {
-        console.log("Execute -> Move Command");
-        this.service.move(direction)
-    }
-    undo() {
+    MoveCommand.prototype.execute = function () {
+        console.log("Execute -> Move Command - UID " + this.uid + "; direction: " + this.direction);
+    };
+    MoveCommand.prototype.undo = function () {
         console.log("Undo -> Move Command");
-        this.service.stop();
-    }
-}
-
-class AndroidService {
-    constructor() {}
-    clean() {
-        console.log("SERVICE -> Clean ");
-    }
-
-    move(direction) {
-        console.log("SERVICE -> Move: ", direction);
-    }
-
-    stop() {
-        console.log("SERVICE -> Stop");
-    }
-}
-
-const android = new AndroidRobot()
-const androidService = new AndroidService()
-
-const cleanCommand = new CleanCommand(androidService)
-const moveCommand = new MoveCommand(androidService)
-
+    };
+    return MoveCommand;
+}());
+var android = new AndroidRobot();
+var cleanCommand = new CleanCommand("room");
+var moveCommand = new MoveCommand("kitchen");
 android.execute(cleanCommand);
-android.execute(moveCommand, "kitchen")
-
-console.log(android.listCommands())
-
 android.undo(cleanCommand);
-android.undo(moveCommand)
-
-console.log(android.listCommands());
-
+android.execute(moveCommand);
+android.undo(moveCommand);
+//# sourceMappingURL=command.js.map

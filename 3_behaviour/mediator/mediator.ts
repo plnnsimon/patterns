@@ -1,43 +1,82 @@
-class User {
-    chat: Chat
-    userId: number
-    constructor(public name: string) {
-      this.name = name
-      this.userId = Math.floor(Math.random() * 100)
-      this.chat = new Chat();
-    }
-
-    sendMessage(message: string, sendTo: User): void {
-      this.chat.send(message, this, sendTo)
-    }
-
-    receiveMessage(message: string, receiveFrom: User): void {
-      console.log(`${receiveFrom.name} sent the message to ${this.name}: ${message}`)
-    }
+interface IATC {
+  registerFlight(flight: Flight): void
+  registerRunway(runway: Runway): void
+  setAvailabilityStatus(status: boolean): void
+  isAvailable(): boolean
 }
-  
-class Chat {
-    users: Array<User>
-    constructor() {
-        this.users = []
-    }
 
-    register(user: User): void {
-        this.users[user.userId] = user
-        user.chat = this;
-    }
+class ATC implements IATC {
+  private runway: Runway
+  private flight: Flight
+  available: boolean
+  registerFlight(flight: Flight): void {
+    this.flight = flight
+  }
+  registerRunway(runway: Runway): void {
+    this.runway = runway
+  }
+  setAvailabilityStatus(status: boolean): void {
+    this.available = status
+  }
+  isAvailable(): boolean {
+    return this.available
+  }
 
-    send(message: string, receiveFrom: User, sendTo: User): void {
-        sendTo.receiveMessage(message, receiveFrom);    
-    }
 }
- 
-var chat = new Chat();
-var user1 = new User("User1");
-var user2 = new User("User2");
 
-chat.register(user1);
-chat.register(user2);
+interface ICommand {
+  land(): void
+}
 
-user1.sendMessage("Hey", user2);
-user2.sendMessage("Hello", user1);
+class Flight implements ICommand {
+  private atcMediator: IATC
+  constructor(atcMediator: IATC) {
+    this.atcMediator = atcMediator
+  }
+
+  land(): void {
+    if (this.atcMediator.isAvailable()) {
+      console.log("Landed successfully");
+      this.atcMediator.setAvailabilityStatus(false)
+    } else {
+      console.log('Waiting for runway');
+    }
+  }
+  readyToLand(): void {
+    console.log("Landing initiated");
+  }
+  parked(): void {
+    console.log("Flight is parked");
+    this.atcMediator.setAvailabilityStatus(true)
+  } 
+}
+
+class Runway implements ICommand {
+  private atcMediator: IATC
+  constructor(atcMediator: IATC) {
+    this.atcMediator = atcMediator
+  }
+
+  land(): void {
+    console.log("Runway is available for landing");
+    this.atcMediator.setAvailabilityStatus(true)
+  }
+}
+
+const atcMediator = new ATC()
+const runway = new Runway(atcMediator)
+const flight = new Flight(atcMediator)
+const flight2 = new Flight(atcMediator)
+
+atcMediator.registerFlight(flight)
+atcMediator.registerRunway(runway)
+
+flight.readyToLand()
+runway.land()
+flight.land()
+
+flight2.land()
+
+flight.parked()
+
+flight2.land()

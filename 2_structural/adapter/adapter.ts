@@ -1,23 +1,7 @@
-interface Warrior {
-    power: number 
-    attack: Function;
-}
-
-class Elf implements Warrior {
+class Alien {
     public power: number
     constructor() {
-        this.power = 50
-    }
-
-    public attack(): number {
-        return Math.ceil(Math.random() * 10) + this.power
-    }
-}
-
-class Orc implements Warrior {
-    public power: number
-    constructor() {
-        this.power = 60
+        this.power = 100
     }
 
     public attack(): number {
@@ -27,7 +11,7 @@ class Orc implements Warrior {
 
 class Human {
     public punch(): number {
-        return 10;
+        return 30;
     }
 
     public kick(): number {
@@ -35,10 +19,11 @@ class Human {
     }
 }
 
-class HumanAdapter implements Warrior {
+class HumanAdapter extends Alien {
     private human: Human
     public power: number
     constructor(human: Human) {
+        super()
         this.human = human
         this.power = 30
     }
@@ -47,12 +32,9 @@ class HumanAdapter implements Warrior {
     }
 }
 
-const orc = new Orc()
-
-const elf = new Elf()
+const alien = new Alien()
 
 const human = new HumanAdapter(new Human)
 
-console.log("Orc attack - " + orc.attack());
-console.log("Elf attack - " + elf.attack());
+console.log("Alien attack - " + alien.attack());
 console.log("Human attack - " + human.attack());

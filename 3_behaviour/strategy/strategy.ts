@@ -20,8 +20,8 @@ class PlatinumDiscount implements Discount {
     }
 }
 
-class ProductDiscount {
-    amount: number
+class Product {
+    public amount: number
     private discount: Discount
     constructor(discount: Discount) {
         this.discount = discount
@@ -32,14 +32,14 @@ class ProductDiscount {
         return `With discount - ${this.discount.getDiscount(this.amount)}`
     }
 
-    setAmount(amount: number) {
+    setAmount(amount: number): void {
         this.amount = amount
     }
 }
 
-const baseDiscount = new ProductDiscount(new BaseDiscount())
-const premiumDiscount = new ProductDiscount(new PremiumDiscount())
-const platinumDiscount = new ProductDiscount(new PlatinumDiscount())
+const baseDiscount = new Product(new BaseDiscount())
+const premiumDiscount = new Product(new PremiumDiscount())
+const platinumDiscount = new Product(new PlatinumDiscount())
 
 baseDiscount.setAmount(1000)
 console.log(baseDiscount.check())

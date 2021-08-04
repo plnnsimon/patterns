@@ -1,24 +1,70 @@
-let collection: Array<any> = [1, 'str', false, 1.1]
+interface MainIterator<T> {
+    current(): string
+    hasNext(): boolean
+    next(): T 
+}
 
-class MyIterator {
+class MyIterator implements MainIterator<string> {
+    private collection: WordsCollection
     private index: number
-    constructor(public collection: Array<any>) {
+    constructor(collection: WordsCollection) {
         this.collection = collection;
         this.index = 0
     }
 
-    hasNext(): boolean {
-        return this.index < this.collection.length
+    current(): string {
+        console.log(`Current: ${this.index}`);
+        return this.collection.getItems()[this.index]
     }
 
-    next(): any {
-        return this.collection[this.index++]
+    hasNext(): boolean {
+        return this.index < this.collection.getCount()
+    }
+
+    next(): string {
+        if (this.hasNext()) {
+            this.current()
+            return this.collection.getItems()[this.index++]
+        } else {
+            console.log("End of collection");
+            return this.collection.getItems()[this.index]
+        }
     }
 }
 
-const iterator = new MyIterator(collection);
+interface Aggregator {
+    getIterator(): MainIterator<string>
+}
+
+class WordsCollection implements Aggregator {
+    private collection: string[] = []
+    public getItems(): string[] {
+        return this.collection
+    }
+    public getCount(): number {
+        return this.collection.length
+    }
+    public addItem(item: string): void {
+        this.collection.push(item)
+    }
+    public getIterator(): MainIterator<string> {
+        return new MyIterator(this)
+    }
+}
+const wordsList = new WordsCollection()
+wordsList.addItem('a')
+wordsList.addItem('b')
+wordsList.addItem('c')
+wordsList.addItem('d')
+
+const iterator = wordsList.getIterator()
+
+// const iterator = new MyIterator(collection);
 
 console.log(iterator.hasNext())
 
-console.log(iterator.next());
-console.log(iterator.next());
+iterator.next()
+iterator.next()
+iterator.next()
+iterator.next()
+iterator.next()

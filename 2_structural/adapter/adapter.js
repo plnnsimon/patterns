@@ -1,45 +1,53 @@
-var Elf = /** @class */ (function () {
-    function Elf() {
-        this.power = 50;
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var Alien = /** @class */ (function () {
+    function Alien() {
+        this.power = 100;
     }
-    Elf.prototype.attack = function () {
+    Alien.prototype.attack = function () {
         return Math.ceil(Math.random() * 10) + this.power;
     };
-    return Elf;
-}());
-var Orc = /** @class */ (function () {
-    function Orc() {
-        this.power = 60;
-    }
-    Orc.prototype.attack = function () {
-        return Math.ceil(Math.random() * 10) + this.power;
-    };
-    return Orc;
+    return Alien;
 }());
 var Human = /** @class */ (function () {
     function Human() {
     }
     Human.prototype.punch = function () {
-        return 10;
+        return 30;
     };
     Human.prototype.kick = function () {
         return Math.ceil(Math.random() * this.punch()) + this.punch();
     };
     return Human;
 }());
-var HumanAdapter = /** @class */ (function () {
+var HumanAdapter = /** @class */ (function (_super) {
+    __extends(HumanAdapter, _super);
     function HumanAdapter(human) {
-        this.human = human;
-        this.power = 30;
+        var _this = _super.call(this) || this;
+        _this.human = human;
+        _this.power = 30;
+        return _this;
     }
     HumanAdapter.prototype.attack = function () {
         return this.human.kick() + this.human.punch() + this.power;
     };
     return HumanAdapter;
-}());
-var orc = new Orc();
-var elf = new Elf();
+}(Alien));
+var alien = new Alien();
 var human = new HumanAdapter(new Human);
-console.log("Orc attack - " + orc.attack());
-console.log("Elf attack - " + elf.attack());
+console.log("Alien attack - " + alien.attack());
 console.log("Human attack - " + human.attack());
+//# sourceMappingURL=adapter.js.map

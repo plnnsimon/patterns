@@ -18,7 +18,7 @@ var Page = /** @class */ (function () {
         this.theme = theme;
     }
     Page.prototype.getContent = function () {
-        return "Content with " + this.theme;
+        return "Content with " + this.theme.theme;
     };
     Page.prototype.setTheme = function (theme) {
         this.theme = theme;
@@ -31,7 +31,7 @@ var AboutPage = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     AboutPage.prototype.getContent = function () {
-        return "About page. Content with " + this.theme;
+        return "About page. Content with " + this.theme.getColor();
     };
     return AboutPage;
 }(Page));
@@ -41,14 +41,13 @@ var MainPage = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     MainPage.prototype.getContent = function () {
-        return "About page. Content with " + this.theme;
+        return "Main page. Content with " + this.theme.getColor();
     };
     return MainPage;
 }(Page));
 var Theme = /** @class */ (function () {
-    function Theme(theme) {
+    function Theme() {
         this.theme = "Default";
-        this.theme = theme;
     }
     Theme.prototype.getColor = function () {
         return this.theme + " color theme";
@@ -58,14 +57,18 @@ var Theme = /** @class */ (function () {
 var DarkTheme = /** @class */ (function (_super) {
     __extends(DarkTheme, _super);
     function DarkTheme() {
-        return _super.call(this, "Dark") || this;
+        var _this = _super.call(this) || this;
+        _this.theme = "Dark";
+        return _this;
     }
     return DarkTheme;
 }(Theme));
 var LightTheme = /** @class */ (function (_super) {
     __extends(LightTheme, _super);
     function LightTheme() {
-        return _super.call(this, "Light") || this;
+        var _this = _super.call(this) || this;
+        _this.theme = "Light";
+        return _this;
     }
     return LightTheme;
 }(Theme));
@@ -73,3 +76,6 @@ var mainPage = new MainPage(new DarkTheme());
 var aboutPage = new AboutPage(new LightTheme());
 console.log(mainPage.getContent());
 console.log(aboutPage.getContent());
+mainPage.setTheme(new LightTheme());
+console.log(mainPage.getContent());
+//# sourceMappingURL=bridge.js.map

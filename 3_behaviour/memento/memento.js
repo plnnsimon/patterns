@@ -1,61 +1,49 @@
-class Game {
-    constructor() {
+var Game = /** @class */ (function () {
+    function Game() {
+        this.state = '';
         console.log("New game created");
     }
-
-    save(state) {
-        return new GameMemento(state)
+    Game.prototype.save = function (state) {
+        return new GameMemento(state);
+    };
+    Game.prototype.download = function (memento) {
+        this.state = memento.getState();
+        console.log('Save - ' + this.state);
+    };
+    return Game;
+}());
+var GameMemento = /** @class */ (function () {
+    function GameMemento(state) {
+        this.state = state;
     }
-
-    download(GameMemento) {
-        this.state = GameMemento.getState();
-        console.log('State = ' + this.state)
-    }
-}
-
-class GameMemento {
-    constructor(state) {
-        this.state = state
-    }
-
-    getState() {
-        return this.state
-    }
-
-    setState(state) {
-        this.state = state
-    } 
-}
-
-
-class Save {
-    constructor() {
+    GameMemento.prototype.getState = function () {
+        return this.state;
+    };
+    GameMemento.prototype.setState = function (state) {
+        this.state = state;
+    };
+    return GameMemento;
+}());
+var Save = /** @class */ (function () {
+    function Save() {
+        this.saveValues = [];
         console.log("Saves created");
-        this.saveValues = []
+        this.saveValues = [];
     }
-
-    addSave(saveName) {
-        this.saveValues.push(saveName);
-        console.log(`Save ${JSON.stringify(saveName)} created successfully`);
-    }
-
-    getSave(index) {
-        if (index === undefined) {
-            console.log("Choose save");
-            return this.saveValues
-        }
-        return this.saveValues[index - 1]
-    }
-}
-
-let game = new Game();
-
-let saves = new Save()
-
-const mySave = game.save('first save')
-
-saves.addSave(mySave)
-saves.addSave(game.save('second save'))
-saves.addSave(game.save('third save'))
-
-game.download(saves.getSave(3))
+    Save.prototype.addSave = function (game) {
+        this.saveValues.push(game);
+        console.log("Save \"" + game.getState() + "\" created successfully");
+    };
+    Save.prototype.getSave = function (index) {
+        return this.saveValues[index - 1];
+    };
+    return Save;
+}());
+var game = new Game();
+var saves = new Save();
+var mySave = game.save("first save");
+saves.addSave(mySave);
+saves.addSave(game.save('second save'));
+saves.addSave(game.save('third save'));
+game.download(saves.getSave(1));
+//# sourceMappingURL=memento.js.map
